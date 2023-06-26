@@ -1,0 +1,159 @@
+<div class="app-content content" >
+    <div class="content-wrapper">
+      <!-- <div >
+        <h4 class="card-title" id="basic-layout-card-center" style="color:grey">City(Add/Edit)</h4>
+    </div> -->
+        <div class="content-body">
+            <div class="row justify-content-md-center">
+                <div class="col-md-12" >
+                    <div class="card" style="width:60%;margin-left:100px">
+                         <div style="display: flex; justify-content: center; align-items: center;">
+                            <h4 style="color:Black;font-size:30px"><b>Delivery Details</b></h4></div>
+                        <div class="card-content collapse show">
+                            <div class="card-body" >
+                                <form  (ngSubmit)="onSubmit()" [formGroup]="form">
+                                    
+                                    <div class="row justify-content-md-center">
+                                        <div class="col-md-12">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                   
+                                                 
+
+                                                  
+                                                        
+                                                        <div class="col-6">
+                                                          <div class="form-group">
+                                                              <label><b>Email</b></label>
+                                                              <span class="text-warning">*</span>
+                                                              <input type="text" class="form-control " formControlName="Email">
+                                                          </div>
+                                                      </div>
+                                                   
+                                                      <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label><b>Phone</b></label>
+                                                            <span class="text-warning">*</span>
+                                                            <input type="text" class="form-control " formControlName="Phone">
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                      <div class="row">
+
+                                                        <div class="col-md-6">
+                                                          <div class="form-group ">
+                                                                  <label >City</label>
+                                                                 
+                                                                  <select class="form-control " formControlName="CityId">
+                                                                      <option [value]="0">Select City</option>
+                                                                      <option *ngFor="let c of cities" [value]="c.cId">{{c.cName}}</option>
+                                                               
+                                                                  </select>
+      
+                                                              
+                                                        </div>
+                                                      </div> 
+                                                      <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label><b>Postal Code</b></label>
+                                                            <span class="text-warning">*</span>
+                                                            <input type="number" class="form-control " formControlName="PostalCode">
+                                                        </div>
+                                                    </div>
+                                                      
+                                                    </div>
+                                                     
+                                                          <div class="row">
+                                                            <div class="col-12">
+
+                                                            <div class="form-group">
+                                                                <label><b>Address</b></label>
+                                                                <span class="text-warning">*</span>
+                                                                <textarea  rows="8"  class="form-control" formControlName="UserAddress"
+                                                                placeholder="Address" ></textarea>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        
+                                                         
+
+                                                       
+                                                
+                                                 
+                                                    
+
+                                                    
+
+                                              
+                                               
+    
+                                                   <!-- {{form.value | json}}  -->
+                                                
+                                            </div>
+                                        
+                                    
+                                    <!-- <div class="form-actions text-center">
+                                        <button (click) = "onReset()"type="button" class="btn btn-warning mr-1 ">
+                                            <i class="feather ft-x"></i>Reset
+                                        </button> -->
+                                        <div style="display: flex; justify-content: center; align-items: center;">
+                                        <button  type="submit" class="btn btn-primary ">
+                                            <i class="feather ft-check"></i>Buy
+                                        </button> 
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="table-responsive">
+                      <table class="table table-bordered mb-0 table-hover table-sm table-responsive">
+                          <thead>
+                            <tr>
+                                <th scope="col" style="width:5%;" class="text-center">#</th>
+                                <th scope="col">State </th>
+                                <th scope="col">City </th>
+
+                                
+                                 <th scope="col" style="width:10%;" class="text-center">Action</th>
+                                  <th scope="col" style="width:10%;" class="text-center">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of states index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>{{ item.sName }} </td>
+                              <td>{{ item.cityName }} </td>
+
+
+                              <td><span *ngIf="item.isActive == true" class="badge badge-success" >{{'Active'}}</span>
+                                 <span *ngIf="item.isActive == false" class="badge badge-warning">{{'In-Active'}}</span>
+                            </td>
+                              <td><button class="btn btn-sm btn-primary btn-ladda" data-style="expand-right" 
+                                 (click)="onEdit(item.stateId)" >Edit</button>
+                                <br>
+                                <br>
+
+                              </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+        </div>
+    </div>
+</div>
+

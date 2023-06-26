@@ -1,0 +1,207 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div >
+        <h4 class="card-title" id="basic-layout-card-center" style="color:grey">Category(Add/Edit)</h4>
+    </div>
+        <div class="content-body">
+            <div class="row justify-content-md-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <form  (ngSubmit)="onSubmit()" [formGroup]="form">
+                                    
+                                    <div class="row justify-content-md-center">
+                                        <div class="col-md-12">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                   
+                                                 
+
+                                                  
+                                                        
+                                                        <div class="col-3">
+                                                          <div class="form-group">
+                                                              <label>Name</label>
+                                                              <span class="text-warning">*</span>
+                                                              <input type="text" class="form-control " formControlName="Cat_Name">
+                                                          </div>
+                                                      </div>
+                                                     
+
+                                                          <div class="col-3">
+                                                              <div class="form-group">
+                                                                  <label>Status</label>
+                                                                  <select class="form-control " formControlName="IsActive" >
+                                                                
+                                                                      <option [ngValue]="true">Active</option>
+                                                                      <option [ngValue]="false">In-Active</option>
+                                                                  </select>
+                                                              </div>
+                                                          </div>
+
+                                                          <div class="col-3">
+                                                            <div class="form-group">
+                                                                <label>Image</label>
+                                                                <span class="text-warning">*</span>
+                                                                <input type="file" (change)="onFileSelected($event)" >
+                                                                <!-- <p style="color:red">{{errorMessage}}</p> -->
+
+                                                            </div>
+
+
+                                                        </div>
+                                                       
+                                                        <div class="col-3">
+                                                          <img *ngIf="show== true" [src]="'data:image/jpeg;base64,' + this.myImage" style="width:100px;height:100px"/>
+
+                                                        </div>
+
+
+                                                        <!-- <input type="file" (change)="onFileSelected($event)">
+                                                        <img [src]="selectedImage" style="width:100px;height:100px"> -->
+
+
+                                                        <!-- <div class="card-block">
+                                                          <div class="card-body">
+                                                            <div class="form-group" >
+                                                              <div class="custom-file">
+                                                                <input type="file" class="custom-file-input" formControlName="importFile" id="importFile"
+                                                                (change)="onFileSelected($event)">
+                                                                <label class="custom-file-label" #labelImport for="inputGroupFile01">Choose file</label>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div> -->
+                                                
+                                                 
+                                                    
+
+                                                    
+
+                                                </div>
+                                               
+    
+                                                   <!-- {{form.value | json}}  -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions text-center">
+                                        <button (click) = "onReset()"type="button" class="btn btn-warning mr-1 ">
+                                            <i class="feather ft-x"></i>Reset
+                                        </button>
+                                        <button  type="submit" class="btn btn-primary ">
+                                            <i class="feather ft-check"></i>Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--filter-->
+            <!-- <div class="row " >
+                <div class="col-md-12">
+                  <m-card [options]="options">
+                    <ng-container mCardHeaderTitle>
+                      Filter Admin
+                    </ng-container>
+                    <ng-container mCardBody>
+              
+                      <div class="row" >
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-content">
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <div class="form-group" >
+                                    <label>Search by state</label>
+                                    <select class="form-control form-control-sm" [(ngModel)]="fltState">
+                                      <option [value]="0">Select State</option>
+                                      <option *ngFor="let c of states" [value]="c.stateId">{{c.name}}</option>
+                                  </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-2" >
+                                  <div class="form-group">
+                                      <label>&nbsp;</label>
+                                      <button class="btn btn-primary form-control" (click)="btnSearchClick()" >Search</button>
+                                  </div>
+                              </div>
+                              </div>
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+              
+              
+                    </ng-container>
+                  </m-card>
+              
+                </div>
+              </div> -->
+             <!--filter end-->
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="table-responsive">
+                      <table class="table table-bordered mb-0 table-hover table-sm table-responsive">
+                          <thead>
+                            <tr>
+                                <th scope="col" style="width:1%;" class="text-center">#</th>
+                                <th scope="col" style="width:10%;">Name</th>
+                                <th scope="col" style="width:10%;">Image</th>
+                                
+                                 <th scope="col" style="width:1%;" class="text-center">Action</th>
+                                  <th scope="col" style="width:1%;" class="text-center">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of categories index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>{{ item.cat_Name }} </td>
+                              <!-- <td>{{ item.cat_Image }} </td> -->
+                              <td ><img [src]="'data:image/jpeg;base64,' + item.cat_ImageView" style="width:100px;height:100px"/> </td>
+                              <!-- <img [src]="'data:image/jpeg;base64,' + form.value.cat_Image" /> -->
+                              <td><span *ngIf="item.isActive == true" class="badge badge-success" >{{'Active'}}</span>
+                                 <span *ngIf="item.isActive == false" class="badge badge-warning">{{'In-Active'}}</span>
+                            </td>
+                              <!-- <td><button class="btn btn-sm btn-primary btn-ladda" data-style="expand-right" 
+                                 (click)="onEdit(item.cat_Id)" >Edit</button>
+                              </td> -->
+                              <td>
+                                
+                                <button class="btn btn-sm btn-primary btn-ladda" data-style="expand-right" 
+                                (click)="onUnDelete(item.cat_Id)" >Active</button>
+
+                                <br>
+                                <br>
+                                
+                                <button class="btn btn-sm btn-danger btn-ladda" data-style="expand-right" 
+                                (click)="onDelete(item.cat_Id)" >De-Active</button>
+                                
+                               
+                             </td>
+
+                            
+
+                            </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+

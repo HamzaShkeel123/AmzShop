@@ -1,0 +1,182 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div >
+        <h4 class="card-title" id="basic-layout-card-center" style="color:grey">Bundle(Add/Edit)</h4>
+    </div>
+        <div class="content-body">
+            <div class="row justify-content-md-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <form  (ngSubmit)="onSubmit()" [formGroup]="form">
+                                    
+                                    <div class="row justify-content-md-center">
+                                        <div class="col-md-12">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                   
+                                                            <div class="col-md-3">
+                                                              <label>Products</label>
+                                                            <select class="form-control " formControlName="ProductId">
+                                                                <option [value]="0">Select Product</option>
+                                                                <option *ngFor="let p of products" [value]="p.pro_Id">{{p.pro_Name}}</option>
+                                                            </select>
+                                                        </div>
+                                                  
+
+                                                  
+                                                        
+                                                        <div class="col-3">
+                                                          <div class="form-group">
+                                                              <label>Supplier Name</label>
+                                                              <span class="text-warning">*</span>
+                                                              <input type="text" class="form-control " formControlName="SupplierName">
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-3">
+                                                        <div class="form-group">
+                                                            <label>Quantity</label>
+                                                            <span class="text-warning">*</span>
+                                                            <input type="number" class="form-control " formControlName="Quantity">
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="col-3">
+                                                        <div class="form-group">
+                                                            <label>Total Price</label>
+                                                            <span class="text-warning">*</span>
+                                                            <input type="number" class="form-control " formControlName="TotalPrice">
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    
+                                                      
+
+                                                </div>
+                                               
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <div class="form-group">
+                                                            <label>Status</label>
+                                                            <select class="form-control " formControlName="IsActive">
+                                                                <option [ngValue]="true">Active</option>
+                                                                <option [ngValue]="false">In-Active</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+                                                   <!-- {{form.value | json}}  -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions text-center">
+                                        <button (click) = "onReset()"type="button" class="btn btn-warning mr-1 ">
+                                            <i class="feather ft-x"></i>Reset
+                                        </button>
+                                        <button  type="submit" class="btn btn-primary ">
+                                            <i class="feather ft-check"></i>Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--filter-->
+            <!-- <div class="row " >
+                <div class="col-md-12">
+                  <m-card [options]="options">
+                    <ng-container mCardHeaderTitle>
+                      Filter Admin
+                    </ng-container>
+                    <ng-container mCardBody>
+              
+                      <div class="row" >
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-content">
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <div class="form-group" >
+                                    <label>Search by state</label>
+                                    <select class="form-control form-control-sm" [(ngModel)]="fltState">
+                                      <option [value]="0">Select State</option>
+                                      <option *ngFor="let c of states" [value]="c.stateId">{{c.name}}</option>
+                                  </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-2" >
+                                  <div class="form-group">
+                                      <label>&nbsp;</label>
+                                      <button class="btn btn-primary form-control" (click)="btnSearchClick()" >Search</button>
+                                  </div>
+                              </div>
+                              </div>
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+              
+              
+                    </ng-container>
+                  </m-card>
+              
+                </div>
+              </div> -->
+             <!--filter end-->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="table-responsive">
+                      <table class="table table-bordered mb-0 table-hover table-sm table-responsive">
+                          <thead>
+                            <tr>
+                                <th scope="col" style="width:5%;" class="text-center">#</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Supplier Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">IsActive</th>
+
+                                 <th scope="col" style="width:10%;" class="text-center">Action</th>
+                                  <th scope="col" style="width:10%;" class="text-center">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of stocks index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>{{ item.productName}} </td>
+                              <td>{{ item.supplierName }} </td>
+                              <td>{{ item.quantity }} </td>
+                              <td>{{ item.totalPrice }} </td>
+                              <td>{{ item.isActive}} </td>
+                              <td><span *ngIf="item.isActive == true" class="badge badge-success" >{{'Active'}}</span>
+                                 <span *ngIf="item.isActive == false" class="badge badge-warning">{{'In-Active'}}</span>
+                            </td>
+                              <td><button class="btn btn-sm btn-primary btn-ladda" data-style="expand-right" 
+                                 (click)="onEdit(item.stockId)" >Edit</button>
+                                <br>
+                                <br>
+                                 <!-- <button class="btn btn-sm btn-primary btn-ladda" data-style="expand-right" (click)="bundleDetails()" >Detail</button> -->
+
+                              </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+

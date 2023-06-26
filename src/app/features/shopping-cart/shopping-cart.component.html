@@ -1,0 +1,77 @@
+<div class="container fluid">
+<div class="content-wrapper" style="margin-top:30px;">
+  
+        <div class="content-body">
+            <div class="row justify-content-md-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        
+                      
+            
+            <!--filter-->
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <!-- <div class="table-responsive"> -->
+                        <div >
+                            <h2    style="margin-left:500px;width:100px;font-size:20px" class="btn btn-info">Cart</h2>
+                        </div>
+                          
+                            <div class="row" *ngFor="let item of carts index as i" style="margin-top:40px">
+                                <!-- <div style="margin-top:30px"> -->
+                                <div class="col-md-3" >
+                            <div ><img [src]="'data:image/jpeg;base64,' + item.pro_ImageView" style="width:200px;height:200px"/></div>
+
+                                </div>
+                                <div class="col-md-4" style="font-size:20px;font-family:Times New Roman;">
+                                   
+                                    <b>Product:</b> 
+                                    <p style="font-size:20px;font-family:Times New Roman;">{{item.pro_Name}}</p>
+
+                                    <b>Details:</b> 
+                                    <p style="font-size:20px;font-family:Times New Roman;">{{item.pro_Description}}</p>
+                                </div>
+
+                                <div class="col-md-4" >
+                                    <h3 style="font-family:Times New Roman;">Order Summary</h3>
+                                    <div style="font-size:20px;font-family:Times New Roman;">Total:{{item.pro_Price*item.quantity}}</div>
+                                    <br>
+                                    <div style="font-size:20px;font-family:Times New Roman;">Quantity:{{item.quantity}}</div>
+                                    <br>
+                                    <div style="font-size:20px;font-family:Times New Roman;">Order Date:{{item.createdAt}}</div>
+                                    <br>
+                                    <div style="font-size:20px;font-family:Times New Roman;">Discount:{{item.productDiscount}}-RS</div>
+                                    <br>
+                                    <div style="font-size:20px;font-family:Times New Roman;">Final Prize:{{(item.pro_Price*item.quantity)-item.productDiscount}}-RS</div>
+                                    <br>
+                                    <button  type="button" class="btn btn-sm btn-primary btn-ladda " (click)="deliveryDetail(item.pro_Id,item.cId)">Checkout</button>
+
+                                </div>
+                            </div>
+
+                           
+
+                            <!-- </div> -->
+                            
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </div>
+               
+              </div>
+              
+                    <div class="row " style="margin-left:100px"><!-- remove row -->
+                      <div class="col-md-12 " >
+                        <app-bundle-to-cart ></app-bundle-to-cart>
+                  
+                      </div>
+                      </div>
+                    </div>
+              </div>
+              
+        </div>
+    </div>
+
+</div>

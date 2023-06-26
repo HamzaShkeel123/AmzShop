@@ -1,0 +1,23 @@
+<div (window:resize)="onResize($event)">
+	<app-header *ngIf="checkUser!='user'"></app-header>
+	<ng-container *ngIf="checkUser!='user' || isMobile === true">
+		<app-verticalnav></app-verticalnav>
+	</ng-container>
+
+
+	<!-- <app-header-horizontal *ngIf="checkUser===1"></app-header-horizontal> -->
+	<app-vertical2 *ngIf="checkUser==='user'"></app-vertical2>
+	<ng-container *ngIf="checkUser==='user' && isMobile === false">
+		<app-horizontalnav></app-horizontalnav>
+	</ng-container>
+
+
+	<!-- <app-header></app-header> -->
+	<!-- <ng-container *ngIf="layout === 'vertical' || isMobile === true">
+		<app-verticalnav></app-verticalnav>
+	</ng-container> -->
+
+	<!-- <ng-container *ngIf="layout === 'horizontal' && isMobile === false">
+		<app-horizontalnav></app-horizontalnav>
+	</ng-container> -->
+</div>

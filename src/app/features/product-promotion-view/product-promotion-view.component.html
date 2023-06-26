@@ -1,0 +1,54 @@
+
+
+<!-- <div class="app-content content"> -->
+    <!-- <div class="content-wrapper"> -->
+      <div >
+        <h4 class="card-title" id="basic-layout-card-center" style="color:grey">Promotions</h4>
+    </div>
+        <div class="content-body">
+            <div class="row "  >
+             
+             
+                        
+                <div class="col-md-6" *ngFor="let product of productPromotions" >
+                  <!-- product.fromDay<=this.day>=toDay && -->
+                    <ng-container  >
+                      
+                        <div class="card news-feed-card-bg text-white"  *ngIf="this.month >= product.fromMonth && this.month <= product.toMonth && this.day >= product.fromDay && this.day <= product.toDay">
+                          <div class="badge badge-danger badge-md " style="width:200px">Promotion</div>
+                          <br>
+                          <h4 style="color:red;margin-left:50px">{{product.productName}}</h4>
+
+                          
+                          <div ><img [src]="'data:image/jpeg;base64,' + product.productImageView" style="width:150px;height:150px"/></div>
+                            <div class="card-img-overlay">
+
+                              <!-- <a [routerLink]="">
+                                <h2 class="card-title mt-2 text-white">Social Media, Selfies, and Addiction.
+                                </h2>
+                              </a> -->
+                              
+                              <!-- <span class="text-white float-right font-small-1">Oct 10, 9:13am</span> -->
+                            </div>
+
+                            <div >
+                              <b style="color:red">From {{product.fromDay}}/{{product.fromMonth}}/{{product.fromYear}} To {{product.toDay}}/{{product.toMonth}}/{{product.toYear}}</b>
+                              <br>
+                              <b style="color:red;margin-left:50px">{{product.productDiscount}}_RS Off</b>
+
+                            </div>
+                          </div>
+                      </ng-container>
+
+                </div>
+                
+                </div>
+            
+           
+           
+
+           
+        <!-- </div> -->
+    <!-- </div> -->
+    
+    

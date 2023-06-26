@@ -1,0 +1,116 @@
+
+
+
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div >
+        <h4 class="card-title" id="basic-layout-card-center" style="color:grey">View Product</h4>
+    </div>
+        <div class="content-body">
+            <div class="row ">
+                <div class="col-md-3">
+                    <div class="card">
+                        
+                       
+
+
+ <div class="card-content collapse show">
+    <div class="card-body">
+        <form [formGroup]="form" >
+        <div class="dropdown show">
+          <div class="dropdown-menu dropdown-menu-xl show"
+            style="display: block; position: static; width: 100%; margin-top: 0; float: none;">
+           
+            <tr *ngFor="let category of categories" >
+                <a  class="dropdown-item" (click)="onProByCat(category.cat_Id)"  >{{category.cat_Name}}</a>
+                
+          
+            </tr>
+           
+        
+          </div>
+        </div>
+        </form>
+      </div>
+                        </div>
+
+
+                      
+
+
+                    </div>
+                </div>
+             
+                <div class="col-md-8 card">
+                  <app-product-promotion-view ></app-product-promotion-view>
+
+                </div>
+
+               
+
+              <div class="card" style="margin-left:310px;width:830px"><!-- remove row -->
+
+                <div class="row " ><!-- remove row -->
+                   
+
+                <ng-container   *ngFor="let product of proByCat" >
+
+                  
+                  <div class="col-md-3 card  ml-3 mt-3" >
+                    <div>
+                      <h4 style="text-align:center" class="badge badge-primary badge-md "><b>{{product.pro_Name}}</b></h4> 
+                  </div>
+              <br>
+                    <div ><img [src]="'data:image/jpeg;base64,' + product.pro_ImageView" style="width:200px;height:200px"/></div>
+                    <br>
+                    <div>
+                      <h4 style="text-align:center">Price:{{product.pro_Price}}-/RS</h4> 
+                    </div>
+                    <div style="text-align:center"   *ngIf="product.productDiscount>0 && this.month >= product.fromMonth && this.month <= product.toMonth && this.day >= product.fromDay && this.day <= product.toDay"><b>Discount:{{product.productDiscount}}-/RS</b></div>
+                    <div style="text-align:center" *ngIf="product.productDiscount>0 && this.month >= product.fromMonth && this.month <= product.toMonth && this.day >= product.fromDay && this.day <= product.toDay"><b>After Discount:{{product.pro_Price-product.productDiscount}}-/RS</b></div>
+
+
+           
+                   
+
+                      <!-- <button  type="button" class="btn btn-sm btn-secondary btn-ladda " data-toggle="modal"
+                        (click)="proCatModalFun(proCatModal,product.pro_Id)" data-target="#exampleModal">Product Details</button>
+                      <br/> -->
+
+                  </div>
+                </ng-container>
+            
+              </div>     <!-- remove row -->
+
+             
+
+            </div>
+
+            <div class="card" style="margin-left:310px;width:830px"><!-- remove row -->
+
+              <div class="row " ><!-- remove row -->
+                <div class="col-md-12 " >
+                  <app-bundle-view ></app-bundle-view>
+            
+                </div>
+                </div>
+              </div>
+           
+          
+            
+
+                </div>
+
+                
+            
+           
+           
+
+           
+        </div>
+    </div>
+    
+    
+    
+    </div>
+

@@ -1,0 +1,238 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div >
+        <h4 class="card-title" id="basic-layout-card-center" style="color:grey">Product(Add/Edit)</h4>
+    </div>
+        <div class="content-body">
+            <div class="row justify-content-md-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <form  [formGroup]="form" (ngSubmit)="onSubmit()">
+                             
+                                    <div class="row justify-content-md-center">
+                                        <div class="col-md-12">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                   
+                                                 
+
+                                                  
+                                                        
+                                                    
+
+                                                      <div class="form-group row mx-auto">
+                                                        <!-- <span class="text-warning">*</span> -->
+                                                        <label class="col-md-1 label-control" for="projectinput5">Name</label>
+                                                        
+                                                        <div class="col-md-9">
+                                                          <input type="text" id="companyName" class="form-control" formControlName="Pro_Name"
+                                                            placeholder="Name">
+                                                            
+                                                        </div>
+                                                        
+                                                      </div>
+
+                                                      <div class="form-group row mx-auto">
+                                                        <!-- <span class="text-warning">*</span> -->
+                                                        <label class="col-md-1 label-control" for="projectinput5">Price</label>
+                                                        <div class="col-md-9">
+                                                          <input type="text" id="companyName" class="form-control" formControlName="Pro_Price"
+                                                            placeholder="Price">
+                                                        </div>
+                                                      </div>
+
+                                                      
+                                                   
+                                                     
+                                                   
+                                                    
+
+                                                    <div class="form-group row last mx-auto">
+                                                        <label class="col-md-1 label-control" for="projectinput9">Desc</label>
+                                                        <div class="col-md-9">
+                                                          <textarea id="projectinput8" rows="5" class="form-control" formControlName="Pro_Description"
+                                                            placeholder="Description"></textarea>
+                                                        </div>
+                                                      </div>
+
+                                                      <div class="card-block col-md-10" >
+                                                        
+                                                        <div class="card-body" style="margin-left:90px">
+                                                          <div class="form-group" novalidate [formGroup]="form">
+                                                            <div class="custom-file" >
+                                                                <!-- <label class="col-md-1 label-control" >Image</label> -->
+                                                              <input type="file" class="custom-file-input" formControlName="Pro_Image" id="importFile"
+                                                                (change)="onFileSelected($event)" >
+                                                              <label class="custom-file-label" #labelImport for="inputGroupFile01">Choose file</label>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        
+                                                      </div>
+                                                      
+                                                      
+                                                      <div class="form-group row last mx-auto">
+                                                        <!-- <div class="form-group"> -->
+                                                            <label class="col-md-1 label-control" for="projectinput9">Categories</label>
+                                                            <!-- <span class="text-warning">*</span> -->
+                                                            <div class="col-md-4">
+                                                            <select class="form-control " formControlName="Cat_Id">
+                                                                <option [value]="0">Select Category</option>
+                                                                <option *ngFor="let c of categories" [value]="c.cat_Id">{{c.cat_Name}}</option>
+                                                         
+                                                            </select>
+                                                        </div>
+                                                        <!-- </div> -->
+                                                  </div>
+                                                          
+                                                  <div class="form-group row last mx-auto"  >
+                                                    <!-- <div class="form-group"> -->
+                                                        <label class="col-md-1 label-control" for="projectinput9">Status</label>
+                                                        <div class="col-md-4">
+                                                        <select class="form-control " formControlName="IsActive">
+                                                            <option [ngValue]="true">Active</option>
+                                                            <option [ngValue]="false">In-Active</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                        
+
+                                                </div>
+                                                
+                                              
+
+                                                   <!-- {{form.value | json}}  -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions text-center">
+                                        <button (click) = "onReset()"type="button" class="btn btn-warning mr-1 ">
+                                            <i class="feather ft-x"></i>Reset
+                                        </button>
+                                        <button  type="submit" class="btn btn-primary ">
+                                            <i class="feather ft-check"></i>Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--filter-->
+            <!-- <div class="row " >
+                <div class="col-md-12">
+                  <m-card [options]="options">
+                    <ng-container mCardHeaderTitle>
+                      Filter Admin
+                    </ng-container>
+                    <ng-container mCardBody>
+              
+                      <div class="row" >
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-content">
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <div class="form-group" >
+                                    <label>Search by state</label>
+                                    <select class="form-control form-control-sm" [(ngModel)]="fltState">
+                                      <option [value]="0">Select State</option>
+                                      <option *ngFor="let c of states" [value]="c.stateId">{{c.name}}</option>
+                                  </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-2" >
+                                  <div class="form-group">
+                                      <label>&nbsp;</label>
+                                      <button class="btn btn-primary form-control" (click)="btnSearchClick()" >Search</button>
+                                  </div>
+                              </div>
+                              </div>
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+              
+              
+                    </ng-container>
+                  </m-card>
+              
+                </div>
+              </div> -->
+             <!--filter end-->
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="table-responsive">
+                      <table class="table table-bordered mb-0 table-hover table-sm table-responsive">
+                          <thead>
+                            <tr>
+                                <th scope="col" style="width:5%;" class="text-center">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Desc</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Stock in</th>
+                                <th scope="col">Stock out</th>
+                                <th scope="col">Stock Left</th>
+
+                                 <th scope="col" style="width:10%;" class="text-center">Action</th>
+                                  <th scope="col" style="width:10%;" class="text-center">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of products index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>{{ item.pro_Name }} </td>
+                              <td>{{ item.pro_Price }} </td>
+                              <td>{{ item.pro_Description }} </td>
+                              <td ><img [src]="'data:image/jpeg;base64,' + item.pro_ImageView" style="width:100px;height:100px"/> </td>
+                              <td>{{ item.categoryName }} </td>
+                              <td>{{ item.stockQuantity}} </td>
+                              <td>{{ item.soldQuantity}} </td>
+                              <td>{{ item.stockQuantity-item.soldQuantity}} </td>
+
+                              <td><span *ngIf="item.isActive == true" class="badge badge-success" >{{'Active'}}</span>
+                                 <span *ngIf="item.isActive == false" class="badge badge-warning">{{'In-Active'}}</span>
+                            </td>
+                              <!-- <td><button class="btn btn-sm btn-primary btn-ladda" data-style="expand-right" 
+                                 (click)="onEdit(item.pro_Id)" >Edit</button>
+                              </td> -->
+
+                              <td>
+                                <button class="btn btn-sm btn-primary btn-ladda" data-style="expand-right" 
+                                (click)="onUnDelete(item.pro_Id)" >Active</button>
+
+                                <br>
+                                <br>
+                                
+                                <button class="btn btn-sm btn-danger btn-ladda" data-style="expand-right" 
+                                (click)="onDelete(item.pro_Id)" >De-Active</button>
+                                
+                               
+                             </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+
